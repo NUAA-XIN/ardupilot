@@ -1,3 +1,7 @@
+//GCS:ground control sysytem
+//地面站通信协议
+
+
 #include "Copter.h"
 
 #include "GCS_Mavlink.h"

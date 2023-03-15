@@ -1,3 +1,5 @@
+//最顶层文件
+
 /*
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -82,10 +84,13 @@
   should be listed here, along with how often they should be called (in hz)
   and the maximum time they are expected to take (in microseconds)
  */
+
+//AP_Scheduler::Task Copter::scheduler_tasks[]  任务调度器的任务列表
 const AP_Scheduler::Task Copter::scheduler_tasks[] = {
     SCHED_TASK(rc_loop,              100,    130),
     SCHED_TASK(throttle_loop,         50,     75),
     SCHED_TASK(update_GPS,            50,    200),
+    //定时调用update_gps函数，调用频率是50hz，预计运行时间不超过200微妙，若超时，调度器强制退出该函数
 #if OPTFLOW == ENABLED
     SCHED_TASK(update_optical_flow,  200,    160),
 #endif
@@ -194,7 +199,7 @@ const AP_Scheduler::Task Copter::scheduler_tasks[] = {
 
 constexpr int8_t Copter::_failsafe_priorities[7];
 
-void Copter::setup()
+void Copter::setup()    //飞控运行时进行初始化
 {
     // Load the default values of variables listed in var_info[]s
     AP_Param::setup_sketch_defaults();
@@ -202,7 +207,7 @@ void Copter::setup()
     // setup storage layout for copter
     StorageManager::set_layout_copter();
 
-    init_ardupilot();
+    init_ardupilot();    //初始化飞控代码
 
     // initialise the main loop scheduler
     scheduler.init(&scheduler_tasks[0], ARRAY_SIZE(scheduler_tasks), MASK_LOG_PM);
@@ -219,17 +224,17 @@ void Copter::loop()
 void Copter::fast_loop()
 {
     // update INS immediately to get current gyro data populated
-    ins.update();
+    ins.update();          //惯导更新   （inertial navigation system: INS）
 
     // run low level rate controllers that only require IMU data
-    attitude_control->rate_controller_run();
+    attitude_control->rate_controller_run();    //姿态控制
 
     // send outputs to the motors library immediately
     motors_output();
 
     // run EKF state estimator (expensive)
     // --------------------
-    read_AHRS();
+    read_AHRS();         //读取姿态   AHRS:  attitude and heading reference system  姿态航向参考系统
 
 #if FRAME_CONFIG == HELI_FRAME
     update_heli_control_dynamics();
@@ -240,7 +245,7 @@ void Copter::fast_loop()
     read_inertia();
 
     // check if ekf has reset target heading or position
-    check_ekf_reset();
+    check_ekf_reset();           //EKF:extend kalman filter  扩展卡尔曼滤波器
 
     // run the attitude controllers
     update_flight_mode();

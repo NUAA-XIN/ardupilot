@@ -1,3 +1,8 @@
+//从此派生出 mode_xxx.cpp
+//派生出各种飞行模式
+
+
+
 #include "Copter.h"
 
 /*

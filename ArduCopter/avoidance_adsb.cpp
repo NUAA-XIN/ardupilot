@@ -1,3 +1,5 @@
+//自动避障
+
 #include "Copter.h"
 #include <AP_Notify/AP_Notify.h>
 

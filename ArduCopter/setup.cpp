@@ -1,3 +1,5 @@
+//初始化
+
 #include "Copter.h"
 
 // report_compass - displays compass information.  Also called by compassmot.pde

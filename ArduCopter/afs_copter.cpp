@@ -2,6 +2,8 @@
   copter specific AP_AdvancedFailsafe class
  */
 
+//afs是最新出的增强型的失控保护，一般用不到
+
 #include "Copter.h"
 
 #if ADVANCED_FAILSAFE == ENABLED

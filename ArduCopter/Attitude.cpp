@@ -1,3 +1,5 @@
+//attitude  姿态控制
+
 #include "Copter.h"
 
 // get_pilot_desired_heading - transform pilot's yaw input into a

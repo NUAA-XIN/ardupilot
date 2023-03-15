@@ -1,3 +1,6 @@
+//parameters :各种参数
+
+
 #include "Copter.h"
 
 /*

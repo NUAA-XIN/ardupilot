@@ -1,3 +1,6 @@
+//地理围栏
+
+
 #include "Copter.h"
 
 // Code to integrate AC_Fence library with main ArduCopter code

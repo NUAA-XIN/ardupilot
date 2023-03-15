@@ -1,3 +1,5 @@
+//电机输出
+
 #include "Copter.h"
 
 #define ARM_DELAY               20  // called at 10hz so 2 seconds

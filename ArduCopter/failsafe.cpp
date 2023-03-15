@@ -1,3 +1,5 @@
+//失控保护
+
 #include "Copter.h"
 
 //

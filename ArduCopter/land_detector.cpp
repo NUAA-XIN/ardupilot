@@ -1,3 +1,5 @@
+//降落检测器
+
 #include "Copter.h"
 
 // Code to detect a crash main ArduCopter code

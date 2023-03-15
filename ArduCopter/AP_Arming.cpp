@@ -1,3 +1,5 @@
+//arming 与飞控解锁相关
+
 #include "Copter.h"
 
 // performs pre-arm checks. expects to be called at 1hz.

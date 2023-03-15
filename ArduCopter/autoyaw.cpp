@@ -1,3 +1,5 @@
+//自动航向控制
+
 #include "Copter.h"
 
 Copter::Mode::AutoYaw Copter::Mode::auto_yaw;

@@ -1,0 +1,54 @@
+{
+	//已经不可用同，通过Cygwin64终端来编译固件
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "进入目录",
+			"command": "cd /cygdrive/e/ardupilot",        
+			//进入飞控源代码所在目录即 e/ardupilot  
+			"args": []
+		},
+		{
+			"type": "shell",
+			"label": "清理工程",
+			"command": "./waf distclean",
+			"args": [],
+			"dependsOn": [
+				"进入目录"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "配置编译目标为RocH7",
+			//
+			"command": "./waf configure --board RocH7",
+			"args": [],
+			"dependsOn": [
+				"进入目录"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "配置编译目标为NFCYv5",
+			"command": "./waf configure --board NFCYv5",
+			"args": [],
+			"dependsOn": [
+				"进入目录"
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "编译多旋翼固件",
+			"command": "./waf copter",
+			"args": [],
+			"dependsOn": [
+				"进入目录"
+			],
+			"problemMatcher": []
+		}
+	]
+}
